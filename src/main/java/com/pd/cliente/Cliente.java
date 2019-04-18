@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public abstract class Cliente {
 
+    private Long id;
     private List<Conta> contas = new ArrayList<>();
     private LocalDateTime dataCriacaoCadastro;
     private boolean ativo;

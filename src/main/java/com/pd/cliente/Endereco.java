@@ -11,6 +11,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class Endereco {
 
+    private Long id;
     private String cidade;
     private String estado;
     private String bairro;
