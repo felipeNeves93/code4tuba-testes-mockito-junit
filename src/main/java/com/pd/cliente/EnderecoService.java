@@ -1,10 +1,6 @@
 package com.pd.cliente;
 
-import java.util.Optional;
+import com.pd.base.BaseService;
 
-public interface EnderecoService {
-
-    Endereco salvar(Endereco entity);
-
-    Optional<Endereco> buscarPorId(Long id);
+public interface EnderecoService extends BaseService<Endereco> {
 }
