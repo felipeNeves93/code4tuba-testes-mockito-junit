@@ -1,4 +1,10 @@
 package com.pd.conta;
 
-public class ContaSalarioRepository {
+import java.util.Optional;
+
+public interface ContaSalarioRepository {
+
+    ContaSalario save(ContaSalario entity);
+
+    Optional<ContaSalario> findById(Long id);
 }

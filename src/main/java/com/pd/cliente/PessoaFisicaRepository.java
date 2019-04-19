@@ -2,13 +2,9 @@ package com.pd.cliente;
 
 import java.util.Optional;
 
-public class PessoaFisicaRepository {
+public interface PessoaFisicaRepository {
 
-    public PessoaFisica save(PessoaFisica entity) {
-        return entity;
-    }
+    PessoaFisica save(PessoaFisica entity);
 
-    public Optional<PessoaFisica> findById(Long id) {
-        return Optional.empty();
-    }
+    Optional<PessoaFisica> findById(Long id);
 }

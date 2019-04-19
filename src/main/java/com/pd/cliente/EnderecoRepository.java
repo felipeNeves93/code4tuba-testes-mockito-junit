@@ -2,13 +2,9 @@ package com.pd.cliente;
 
 import java.util.Optional;
 
-public class EnderecoRepository {
+public interface EnderecoRepository {
 
-    public Endereco save(Endereco entity) {
-        return entity;
-    }
+    Endereco save(Endereco entity);
 
-    public Optional<Endereco> findById(Long id) {
-        return Optional.empty();
-    }
+    Optional<Endereco> findById(Long id);
 }

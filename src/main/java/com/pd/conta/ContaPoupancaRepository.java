@@ -1,4 +1,10 @@
 package com.pd.conta;
 
-public class ContaPoupancaRepository {
+import java.util.Optional;
+
+public interface ContaPoupancaRepository {
+
+    ContaPoupanca save(ContaPoupanca entity);
+
+    Optional<ContaPoupanca> findById(Long id);
 }

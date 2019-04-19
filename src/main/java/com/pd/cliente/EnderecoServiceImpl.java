@@ -6,8 +6,8 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     private final EnderecoRepository enderecoRepository;
 
-    public EnderecoServiceImpl() {
-        this.enderecoRepository = new EnderecoRepository();
+    public EnderecoServiceImpl(EnderecoRepository enderecoRepository) {
+        this.enderecoRepository = enderecoRepository;
     }
 
     @Override

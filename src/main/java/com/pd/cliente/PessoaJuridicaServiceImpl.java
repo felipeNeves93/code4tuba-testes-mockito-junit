@@ -6,8 +6,8 @@ public class PessoaJuridicaServiceImpl implements PessoaJuridicaService {
 
     private final PessoaJuridicaRepository pessoaJuridicaRepository;
 
-    public PessoaJuridicaServiceImpl() {
-        this.pessoaJuridicaRepository = new PessoaJuridicaRepository();
+    public PessoaJuridicaServiceImpl(PessoaJuridicaRepository pessoaJuridicaRepository) {
+        this.pessoaJuridicaRepository = pessoaJuridicaRepository;
     }
 
     @Override
