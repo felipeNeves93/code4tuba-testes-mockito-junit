@@ -1,29 +1,19 @@
 package com.pd.conta;
 
+import com.pd.base.exception.OperacaoNaoPermitidaException;
 import lombok.Builder;
 
 @Builder
 public class ContaPoupanca extends Conta {
 
-    private Double taxaRendimento;
+    private Double taxaRendimentoAoMes;
 
-    public Double calcularRendimentos(){
-        // Método para calcular os rendimentos da conta baseados no tempo atual - tempo abertura.
+    public Double calcularRendimentos() {
         return null;
     }
 
     @Override
-    public Double sacar(Double valor) {
-        return null;
-    }
-
-    @Override
-    public Double transferir(Double valor, Conta conta) {
-        return null;
-    }
-
-    @Override
-    public Double depositar(Double valor) {
-        return null;
+    public Double transferir(Double valor, Conta conta) throws Exception {
+        throw new OperacaoNaoPermitidaException();
     }
 }

@@ -16,11 +16,6 @@ public class ContaCorrente extends Conta {
     }
 
     @Override
-    public Double sacar(Double valor) {
-        return null;
-    }
-
-    @Override
     public Double transferir(Double valor, Conta conta) {
         return null;
     }
