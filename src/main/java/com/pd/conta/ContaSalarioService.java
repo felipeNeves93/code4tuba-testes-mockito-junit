@@ -1,10 +1,6 @@
 package com.pd.conta;
 
-import java.util.Optional;
+import com.pd.base.BaseService;
 
-public interface ContaSalarioService {
-
-    ContaSalario salvar(ContaSalario contaSalario);
-
-    Optional<ContaSalario> buscarPorId(Long id);
+public interface ContaSalarioService extends BaseService<ContaSalario> {
 }

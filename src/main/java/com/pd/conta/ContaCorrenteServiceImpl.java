@@ -1,22 +1,8 @@
 package com.pd.conta;
 
-import java.util.Optional;
+import com.pd.base.BaseServiceImpl;
 
-public class ContaCorrenteServiceImpl implements ContaCorrenteService {
+public class ContaCorrenteServiceImpl extends BaseServiceImpl<ContaCorrenteRepository, ContaCorrente>
+        implements ContaCorrenteService {
 
-    private ContaCorrenteRepository contaCorrenteRepository;
-
-    public ContaCorrenteServiceImpl(ContaCorrenteRepository contaCorrenteRepository) {
-        this.contaCorrenteRepository = contaCorrenteRepository;
-    }
-
-    @Override
-    public ContaCorrente salvar(ContaCorrente contaCorrente) {
-        return contaCorrenteRepository.save(contaCorrente);
-    }
-
-    @Override
-    public Optional<ContaCorrente> buscarPorId(Long id) {
-        return contaCorrenteRepository.findById(id);
-    }
 }

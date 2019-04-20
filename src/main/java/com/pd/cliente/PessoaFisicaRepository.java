@@ -1,10 +1,6 @@
 package com.pd.cliente;
 
-import java.util.Optional;
+import com.pd.base.BaseRepository;
 
-public interface PessoaFisicaRepository {
-
-    PessoaFisica save(PessoaFisica entity);
-
-    Optional<PessoaFisica> findById(Long id);
+public interface PessoaFisicaRepository extends BaseRepository<PessoaFisica> {
 }

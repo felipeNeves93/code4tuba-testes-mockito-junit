@@ -1,10 +1,6 @@
 package com.pd.cliente;
 
-import java.util.Optional;
+import com.pd.base.BaseService;
 
-public interface PessoaFisicaService {
-
-    PessoaFisica salvar(PessoaFisica entity);
-
-    Optional<PessoaFisica> buscarPorId(Long id);
+public interface PessoaFisicaService extends BaseService<PessoaFisica> {
 }

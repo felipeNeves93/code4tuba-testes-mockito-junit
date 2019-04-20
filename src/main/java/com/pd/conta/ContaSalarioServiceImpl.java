@@ -1,22 +1,8 @@
 package com.pd.conta;
 
-import java.util.Optional;
+import com.pd.base.BaseServiceImpl;
 
-public class ContaSalarioServiceImpl implements ContaSalarioService {
+public class ContaSalarioServiceImpl extends BaseServiceImpl<ContaSalarioRepository, ContaSalario>
+        implements ContaSalarioService {
 
-    private final ContaSalarioRepository contaSalarioRepository;
-
-    public ContaSalarioServiceImpl(ContaSalarioRepository contaSalarioRepository) {
-        this.contaSalarioRepository = contaSalarioRepository;
-    }
-
-    @Override
-    public ContaSalario salvar(ContaSalario contaSalario) {
-        return contaSalarioRepository.save(contaSalario);
-    }
-
-    @Override
-    public Optional<ContaSalario> buscarPorId(Long id) {
-        return contaSalarioRepository.findById(id);
-    }
 }

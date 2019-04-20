@@ -1,10 +1,6 @@
 package com.pd.conta;
 
-import java.util.Optional;
+import com.pd.base.BaseService;
 
-public interface ContaCorrenteService {
-
-    ContaCorrente salvar(ContaCorrente contaCorrente);
-
-    Optional<ContaCorrente> buscarPorId(Long id);
+public interface ContaCorrenteService extends BaseService<ContaCorrente> {
 }

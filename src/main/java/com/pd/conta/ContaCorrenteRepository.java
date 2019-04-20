@@ -1,10 +1,7 @@
 package com.pd.conta;
 
-import java.util.Optional;
+import com.pd.base.BaseRepository;
 
-public interface ContaCorrenteRepository {
+public interface ContaCorrenteRepository extends BaseRepository<ContaCorrente> {
 
-    ContaCorrente save(ContaCorrente entity);
-
-    Optional<ContaCorrente> findById(Long id);
 }

@@ -1,22 +1,8 @@
 package com.pd.cliente;
 
-import java.util.Optional;
+import com.pd.base.BaseServiceImpl;
 
-public class PessoaFisicaServiceImpl implements PessoaFisicaService {
+public class PessoaFisicaServiceImpl extends BaseServiceImpl<PessoaFisicaRepository, PessoaFisica>
+        implements PessoaFisicaService {
 
-    private final PessoaFisicaRepository pessoaFisicaRepository;
-
-    public PessoaFisicaServiceImpl(PessoaFisicaRepository pessoaFisicaRepository) {
-        this.pessoaFisicaRepository = pessoaFisicaRepository;
-    }
-
-    @Override
-    public PessoaFisica salvar(PessoaFisica entity) {
-        return pessoaFisicaRepository.save(entity);
-    }
-
-    @Override
-    public Optional<PessoaFisica> buscarPorId(Long id) {
-        return pessoaFisicaRepository.findById(id);
-    }
 }

@@ -1,10 +1,6 @@
 package com.pd.conta;
 
-import java.util.Optional;
+import com.pd.base.BaseService;
 
-public interface ContaPoupancaService {
-
-    ContaPoupanca salvar(ContaPoupanca contaPoupanca);
-
-    Optional<ContaPoupanca> buscarPorId(Long id);
+public interface ContaPoupancaService extends BaseService<ContaPoupanca> {
 }
