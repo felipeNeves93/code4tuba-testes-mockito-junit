@@ -34,7 +34,10 @@ public abstract class Conta implements OperacoesBancarias {
 
     @Override
     public Double transferir(Double valor, Conta conta) throws Exception {
-        return null;
+
+        conta.setValorAtual(conta.getValorAtual() + valor);
+
+        return valor;
     }
 
     @Override

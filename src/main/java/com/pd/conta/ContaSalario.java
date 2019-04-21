@@ -15,11 +15,6 @@ public class ContaSalario extends Conta {
     private Cliente empregador;
 
     @Override
-    public Double transferir(Double valor, Conta conta) {
-        return null;
-    }
-
-    @Override
     public Double depositar(Double valor) {
         if (Objects.nonNull(this.getEmpregador())) {
             return super.depositar(valor);

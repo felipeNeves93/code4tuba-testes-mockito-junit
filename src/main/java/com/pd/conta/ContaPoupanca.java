@@ -6,10 +6,11 @@ import lombok.Builder;
 @Builder
 public class ContaPoupanca extends Conta {
 
-    private Double taxaRendimentoAoMes;
+    private static final Double TAXA_RENDIMENTO_MES = 0.3715;
 
-    public Double calcularRendimentos() {
-        return null;
+    public Double calcularRendimentos(Long quantidadeMeses) {
+
+        return (this.getValorAtual() * TAXA_RENDIMENTO_MES) * quantidadeMeses;
     }
 
     @Override
