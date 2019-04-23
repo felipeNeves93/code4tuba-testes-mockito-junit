@@ -10,9 +10,9 @@ public class PessoaFisicaTest {
 
     @Test
     public void testGetNomeCompleto(){
-        final String NOME_FINAL_ESPERADO = "Felipe Neves";
+        final var NOME_FINAL_ESPERADO = "Felipe Neves";
 
-        PessoaFisica pessoa = PessoaFisica.builder()
+        var pessoa = PessoaFisica.builder()
                 .nome("Felipe")
                 .sobrenome("Neves")
                 .build();
