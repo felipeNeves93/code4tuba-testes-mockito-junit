@@ -1,8 +1,11 @@
 package com.pd.cliente;
 
-import lombok.Builder;
+import lombok.*;
 
-@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PessoaFisica extends Cliente {
 
     private String nome;
@@ -18,5 +21,15 @@ public class PessoaFisica extends Cliente {
                 .append(sobrenome);
 
         return nomeCompleto.toString();
+    }
+
+    @Builder
+    public PessoaFisica(Long id, Endereco endereco, String nome, String sobrenome, String cpf, Double renda) {
+        super.setId(id);
+        super.setEndereco(endereco);
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.cpf = cpf;
+        this.renda = renda;
     }
 }
