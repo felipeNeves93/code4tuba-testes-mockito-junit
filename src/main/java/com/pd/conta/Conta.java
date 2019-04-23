@@ -41,8 +41,7 @@ public abstract class Conta implements OperacoesBancarias {
     }
 
     @Override
-    public Double depositar(Double valor) {
+    public void depositar(Double valor) {
         this.valorAtual += valor;
-        return valorAtual;
     }
 }

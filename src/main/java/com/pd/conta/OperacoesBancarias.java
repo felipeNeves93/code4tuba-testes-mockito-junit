@@ -6,5 +6,5 @@ public interface OperacoesBancarias {
 
     Double transferir(Double valor, Conta conta) throws Exception;
 
-    Double depositar(Double valor) throws Exception;
+    void depositar(Double valor) throws Exception;
 }
