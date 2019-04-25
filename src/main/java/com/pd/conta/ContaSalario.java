@@ -1,25 +1,30 @@
 package com.pd.conta;
 
 import com.pd.cliente.Cliente;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ContaSalario extends Conta {
 
     private Cliente empregador;
 
-    @Override
-    public Double depositar(Double valor) {
-        if (Objects.nonNull(this.getEmpregador())) {
-            return super.depositar(valor);
-        }
+    @Builder
+    public ContaSalario(String numero, LocalDateTime dataAbertura, LocalDateTime dataFDechamento,
+                        Cliente cliente, Double valorAtual, Double taxaTransferencia, Cliente empregador) {
+        super(numero, dataAbertura, dataFDechamento, cliente, valorAtual, taxaTransferencia);
+        this.empregador = empregador;
+    }
 
-        return null;
+    @Override
+    public void depositar(Double valor) {
+        if (Objects.nonNull(this.getEmpregador())) {
+            super.depositar(valor);
+        }
     }
 }

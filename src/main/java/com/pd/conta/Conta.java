@@ -34,14 +34,20 @@ public abstract class Conta implements OperacoesBancarias {
 
     @Override
     public Double transferir(Double valor, Conta conta) throws Exception {
-
+        if (podeTransferir(valor)){
+            throw new SaldoInsuficienteException(valor, this.valorAtual);
+        }
         conta.setValorAtual(conta.getValorAtual() + valor);
-
         return valor;
+
     }
 
     @Override
     public void depositar(Double valor) {
         this.valorAtual += valor;
+    }
+
+    private Boolean podeTransferir(Double valorTransferencia){
+        return (valorTransferencia + this.taxaTransferencia) > this.valorAtual;
     }
 }
