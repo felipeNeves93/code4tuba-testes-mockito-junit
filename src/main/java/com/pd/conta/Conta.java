@@ -1,11 +1,9 @@
 package com.pd.conta;
 
+import com.pd.base.exception.OperacaoNaoPermitidaException;
 import com.pd.base.exception.SaldoInsuficienteException;
 import com.pd.cliente.Cliente;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -19,8 +17,8 @@ public abstract class Conta implements OperacoesBancarias {
     private LocalDateTime dataAbertura;
     private LocalDateTime dataFDechamento;
     private Cliente cliente;
-    private Double valorAtual;
-    private Double taxaTransferencia;
+    private Double valorAtual = 0.0;
+    private Double taxaTransferencia = 0.0;
 
     @Override
     public Double sacar(Double valor) throws Exception {
@@ -34,20 +32,21 @@ public abstract class Conta implements OperacoesBancarias {
 
     @Override
     public Double transferir(Double valor, Conta conta) throws Exception {
-        if (podeTransferir(valor)){
-            throw new SaldoInsuficienteException(valor, this.valorAtual);
+        if (!podeTransferir(valor)) {
+            throw new SaldoInsuficienteException(valor, getValorAtual());
         }
+        this.valorAtual -= valor + this.taxaTransferencia;
         conta.setValorAtual(conta.getValorAtual() + valor);
         return valor;
 
     }
 
+    private Boolean podeTransferir(Double valorTransferencia) {
+        return (valorTransferencia + getTaxaTransferencia()) <= getValorAtual();
+    }
+
     @Override
     public void depositar(Double valor) {
         this.valorAtual += valor;
-    }
-
-    private Boolean podeTransferir(Double valorTransferencia){
-        return (valorTransferencia + this.taxaTransferencia) > this.valorAtual;
     }
 }

@@ -1,5 +1,7 @@
 package com.pd.conta;
 
+import com.pd.base.exception.OperacaoNaoPermitidaException;
+import com.pd.base.exception.SaldoInsuficienteException;
 import com.pd.cliente.Cliente;
 import lombok.*;
 
