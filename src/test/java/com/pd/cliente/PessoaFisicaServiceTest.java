@@ -3,13 +3,13 @@ package com.pd.cliente;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.any;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PessoaFisicaServiceTest {
@@ -23,7 +23,7 @@ public class PessoaFisicaServiceTest {
     @Before
     public void setUp() {
         // Mockando o comportamento do metodo buscar por id para retornar esse objeto pessoa
-        when(pessoaFisicaService.buscarPorId(1L)).thenReturn(PessoaFisica.builder()
+        Mockito.when(pessoaFisicaService.buscarPorId(1L)).thenReturn(PessoaFisica.builder()
                 .id(1L)
                 .nome("Felipe")
                 .endereco(Endereco.builder().build())
@@ -48,7 +48,7 @@ public class PessoaFisicaServiceTest {
 
         // Aproveitando da vantagem do @spy, não precisamos simular o comportamento de todos os metodos da classe,
         // e sim, apenas dos que quisermos.
-        when(enderecoService.atualizarEndereco(1L)).thenReturn(Endereco.builder()
+        Mockito.when(enderecoService.atualizarEndereco(1L)).thenReturn(Endereco.builder()
                 .id(1L)
                 .bairro("bairro 123")
                 .cep("888888")
@@ -63,6 +63,57 @@ public class PessoaFisicaServiceTest {
         assertTrue(endereco.isEnderecoCompleto());
 
         // Lembrando que essa opção de mockar apenas alguns metodos, é apenas possível com o @Spy.
+
+    }
+
+    @Test
+    public void testSpy() {
+        // aqui estamos usar o spy do metodo statico do mockito
+        PessoaFisicaServiceImpl service = Mockito.spy(new PessoaFisicaServiceImpl());
+
+
+        PessoaFisica teste = PessoaFisica.builder()
+                .id(1L)
+                .nome("Teste")
+                .build();
+
+
+        teste = service.salvar(teste);
+
+        assertEquals(1L, teste.getId().longValue());
+
+        Mockito.when(service.buscarPorId(any())).thenReturn(teste);
+
+        PessoaFisica id = service.buscarPorId(2L);
+
+        assertNotNull(id);
+        assertEquals(1L, teste.getId().longValue());
+
+    }
+
+    @Test
+    public void testMock() {
+        // aqui estamos usar o mock do metodo statico do mockito
+        PessoaFisicaService service = Mockito.mock(PessoaFisicaService.class);
+
+
+        PessoaFisica teste = PessoaFisica.builder()
+                .id(1L)
+                .nome("Teste")
+                .build();
+
+        Mockito.when(service.salvar(any())).thenReturn(teste);
+
+        teste = service.salvar(teste);
+
+        assertEquals(1L, teste.getId().longValue());
+
+        Mockito.when(service.buscarPorId(any())).thenReturn(teste);
+
+        PessoaFisica id = service.buscarPorId(2L);
+
+        assertNotNull(id);
+        assertEquals(1L, teste.getId().longValue());
 
     }
 }

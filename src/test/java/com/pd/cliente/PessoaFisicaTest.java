@@ -1,7 +1,6 @@
 package com.pd.cliente;
 
 import com.pd.base.exception.CampoObrigatorioException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -13,7 +12,7 @@ import static org.junit.Assert.*;
 public class PessoaFisicaTest {
 
     @Test
-    public void testGetNomeCompleto(){
+    public void testGetNomeCompleto() {
         final var NOME_FINAL_ESPERADO = "Felipe Neves";
 
         var pessoa = PessoaFisica.builder()
@@ -25,7 +24,7 @@ public class PessoaFisicaTest {
     }
 
     @Test(expected = CampoObrigatorioException.class)
-    public void testGetNomeCompletoNomeESobreNomeNulo(){
+    public void testGetNomeCompletoNomeESobreNomeNulo() {
         var pessoa = PessoaFisica.builder().build();
 
         var nomeCompleto = pessoa.getNomeCompleto();
