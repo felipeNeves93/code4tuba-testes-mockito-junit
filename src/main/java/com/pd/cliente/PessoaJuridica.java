@@ -38,4 +38,9 @@ public class PessoaJuridica extends Cliente {
             this.situacaoFinanceiraOkEmpresa = Boolean.FALSE;
         }
     }
+
+    public void adicionarCapital(Double valor) {
+        var capitalAtualizado = this.capital + valor;
+        this.capital = capitalAtualizado;
+    }
 }
