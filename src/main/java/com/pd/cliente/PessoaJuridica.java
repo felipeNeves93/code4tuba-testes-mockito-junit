@@ -31,14 +31,6 @@ public class PessoaJuridica extends Cliente {
         return capital > 0;
     }
 
-    public void setSituacaoFinanceiraEmpresa() {
-        if (isCapitalPositivo()) {
-            this.situacaoFinanceiraOkEmpresa = Boolean.TRUE;
-        } else {
-            this.situacaoFinanceiraOkEmpresa = Boolean.FALSE;
-        }
-    }
-
     public void adicionarCapital(Double valor) {
         var capitalAtualizado = this.capital + valor;
         this.capital = capitalAtualizado;
