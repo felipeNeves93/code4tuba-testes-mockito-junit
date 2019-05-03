@@ -63,6 +63,5 @@ public class PessoaFisicaServiceTest {
         assertTrue(endereco.isEnderecoCompleto());
 
         // Lembrando que essa opção de mockar apenas alguns metodos, é apenas possível com o @Spy.
-
     }
 }

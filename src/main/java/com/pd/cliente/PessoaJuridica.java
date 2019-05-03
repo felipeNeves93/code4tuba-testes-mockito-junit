@@ -31,7 +31,6 @@ public class PessoaJuridica extends Cliente {
         return capital > 0;
     }
 
-    @Builder
     public void setSituacaoFinanceiraEmpresa() {
         if (isCapitalPositivo()) {
             this.situacaoFinanceiraOkEmpresa = Boolean.TRUE;
