@@ -81,6 +81,7 @@ public class PessoaFisicaServiceTest {
 
         assertEquals(1L, teste.getId().longValue());
 
+        // usando o mockito para retornar o objeto teste quando chamar o método buscarPorId
         Mockito.when(service.buscarPorId(any())).thenReturn(teste);
 
         PessoaFisica id = service.buscarPorId(2L);
@@ -101,12 +102,14 @@ public class PessoaFisicaServiceTest {
                 .nome("Teste")
                 .build();
 
+        // usando o mockito para quando chamar o salvar retornar o objeto teste
         Mockito.when(service.salvar(any())).thenReturn(teste);
 
         teste = service.salvar(teste);
 
         assertEquals(1L, teste.getId().longValue());
 
+        // novamente usando o mockito para quando chamar o buscarPorId retornar o objeto teste
         Mockito.when(service.buscarPorId(any())).thenReturn(teste);
 
         PessoaFisica id = service.buscarPorId(2L);

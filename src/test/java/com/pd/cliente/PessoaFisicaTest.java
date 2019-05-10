@@ -12,35 +12,17 @@ import static org.junit.Assert.*;
 public class PessoaFisicaTest {
 
     @Test
-    public void testGetNomeCompleto() {
-        final var NOME_FINAL_ESPERADO = "Felipe Neves";
-
-        var pessoa = PessoaFisica.builder()
-                .nome("Felipe")
-                .sobrenome("Neves")
-                .build();
-
-        assertEquals(NOME_FINAL_ESPERADO, pessoa.getNomeCompleto());
-    }
-
-    @Test(expected = CampoObrigatorioException.class)
-    public void testGetNomeCompletoNomeESobreNomeNulo() {
+    public void testIsNomeCompletoFalse() throws Exception {
         var pessoa = PessoaFisica.builder().build();
 
-        var nomeCompleto = pessoa.getNomeCompleto();
-    }
-
-    @Test(expected = CampoObrigatorioException.class)
-    public void testExceptionEmIsNomeCompleto() throws Exception {
-        var pessoa = PessoaFisica.builder().build();
-
-        var nomeCompleto = pessoa.getNomeCompleto();
+        //usando o powermock para chamar a execução do método pridado
         Boolean isNomeCompleto = Whitebox.invokeMethod(pessoa, "isNomeCompleto");
         assertFalse(isNomeCompleto);
     }
 
     @Test
-    public void testIsNomeCompleto() throws Exception {
+    public void testIsNomeCompletoTrue() throws Exception {
+        final var NOME_FINAL_ESPERADO = "Felipe Neves";
         var pessoa = PessoaFisica.builder()
                 .nome("Felipe")
                 .sobrenome("Neves")
@@ -48,5 +30,6 @@ public class PessoaFisicaTest {
 
         Boolean isNomeCompleto = Whitebox.invokeMethod(pessoa, "isNomeCompleto");
         assertTrue(isNomeCompleto);
+        assertEquals(NOME_FINAL_ESPERADO, pessoa.getNomeCompleto());
     }
 }
