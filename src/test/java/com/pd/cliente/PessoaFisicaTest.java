@@ -1,6 +1,5 @@
 package com.pd.cliente;
 
-import com.pd.base.exception.CampoObrigatorioException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -22,7 +21,6 @@ public class PessoaFisicaTest {
 
     @Test
     public void testIsNomeCompletoTrue() throws Exception {
-        final var NOME_FINAL_ESPERADO = "Felipe Neves";
         var pessoa = PessoaFisica.builder()
                 .nome("Felipe")
                 .sobrenome("Neves")
@@ -30,6 +28,5 @@ public class PessoaFisicaTest {
 
         Boolean isNomeCompleto = Whitebox.invokeMethod(pessoa, "isNomeCompleto");
         assertTrue(isNomeCompleto);
-        assertEquals(NOME_FINAL_ESPERADO, pessoa.getNomeCompleto());
     }
 }

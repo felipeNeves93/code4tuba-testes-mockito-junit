@@ -10,6 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyLong;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PessoaFisicaServiceTest {
@@ -33,6 +34,7 @@ public class PessoaFisicaServiceTest {
     @Test
     public void testBuscarPorId() {
         var pessoaFisica = pessoaFisicaService.buscarPorId(1L);
+        assertEquals(1L, pessoaFisica.getId().longValue());
         assertEquals("Felipe", pessoaFisica.getNome());
     }
 
@@ -48,8 +50,8 @@ public class PessoaFisicaServiceTest {
 
         // Aproveitando da vantagem do @spy, não precisamos simular o comportamento de todos os metodos da classe,
         // e sim, apenas dos que quisermos.
-        Mockito.when(enderecoService.atualizarEndereco(1L)).thenReturn(Endereco.builder()
-                .id(1L)
+        Mockito.when(enderecoService.atualizarEndereco(anyLong())).thenReturn(Endereco.builder()
+                .id(100L)
                 .bairro("bairro 123")
                 .cep("888888")
                 .cidade("Tubarão")
@@ -60,6 +62,7 @@ public class PessoaFisicaServiceTest {
         // Aqui, mockando o comportamento do metodo atualizarEndereco, ele deve retornar o objeto com todos os campos
         // e passar no teste.
         endereco = enderecoService.atualizarEndereco(1L);
+        assertEquals(100L, endereco.getId().longValue());
         assertTrue(endereco.isEnderecoCompleto());
 
         // Lembrando que essa opção de mockar apenas alguns metodos, é apenas possível com o @Spy.
@@ -84,10 +87,10 @@ public class PessoaFisicaServiceTest {
         // usando o mockito para retornar o objeto teste quando chamar o método buscarPorId
         Mockito.when(service.buscarPorId(any())).thenReturn(teste);
 
-        PessoaFisica id = service.buscarPorId(2L);
+        PessoaFisica pessoaBuscada = service.buscarPorId(2L);
 
-        assertNotNull(id);
-        assertEquals(1L, teste.getId().longValue());
+        assertNotNull(pessoaBuscada);
+        assertEquals(1L, pessoaBuscada.getId().longValue());
 
     }
 
@@ -112,10 +115,10 @@ public class PessoaFisicaServiceTest {
         // novamente usando o mockito para quando chamar o buscarPorId retornar o objeto teste
         Mockito.when(service.buscarPorId(any())).thenReturn(teste);
 
-        PessoaFisica id = service.buscarPorId(2L);
+        PessoaFisica pessoaBuscada = service.buscarPorId(2L);
 
-        assertNotNull(id);
-        assertEquals(1L, teste.getId().longValue());
+        assertNotNull(pessoaBuscada);
+        assertEquals(1L, pessoaBuscada.getId().longValue());
 
     }
 }
